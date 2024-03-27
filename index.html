@@ -24,13 +24,32 @@
       </script>
     <title>Acme Filmes CMS</title>
 </head>
-<body>
+<body class="overflow-hidden">
+
     <div class="header width-full h-40 bg-bg-header flex justify-between" id="header">
         <img src="./img/Logo Desktop.png" alt="" class="ml-5 mt-4 h-44">
 
         <div class="perfil w-28 h-28 bg-bg-tabela mr-5 mt-6 rounded-full flex align-center justify-center">
             <img src="./img/person_outline_icon.png" alt="" class="h-24">
         </div>
+    </div>
+
+    <div class="main width-full h-screen bg-bg-main flex">
+       
+        <div class="botoes-laterais flex flex-col gap-8 ml-12 h-48 w-64 justify-center mt-12">
+
+            <button class="bg-bg-botao-visualizar-filmes flex justify-center align-center rounded-md w-full h-16">
+                <img src="./img/eye_icon.png" alt="" class="h-14">
+                <p class="text-white mt-3.5 text-lg">Visualizar Filmes</p>
+            </button>
+
+            <button class="bg-bg-botao-adicionar-filmes flex justify-center align-center rounded-md w-full h-16">
+                <img src="./img/plus_icon.png" alt="" class="h-14">
+                <p class="text-white mt-3.5 text-lg">Adicionar Filme</p>
+            </button>
+
+        </div>
+    
     </div>
     
 </body>
