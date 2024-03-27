@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+                colors:{
+                    'bg-header': '#782525',
+                    'bg-main': '#323247',
+                    'bg-tabela': '#D9D9D9',
+                    'bg-botao-visualizar-filmes': '#419AA6',
+                    'bg-botao-adicionar-filmes': '#639B40',
+                    'bg-botao-editar-filmes': '#1EA19A',
+                    'bg-botao-deletar-filmes': '#C32121'
+                }
+            }
+          }
+        }
+      </script>
+    <title>Acme Filmes CMS</title>
+</head>
+<body>
+    <div class="header width-full h-40 bg-bg-header flex justify-between" id="header">
+        <img src="./img/Logo Desktop.png" alt="" class="ml-5 mt-4 h-44">
+
+        <div class="perfil w-28 h-28 bg-bg-tabela mr-5 mt-6 rounded-full flex align-center justify-center">
+            <img src="./img/person_outline_icon.png" alt="" class="h-24">
+        </div>
+    </div>
+    
+</body>
+</html>
