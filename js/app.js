@@ -37,7 +37,7 @@ async function criarTabela(){
         iconeLixeira.src = '../img/remove_icon.png'
         excluirFilme.appendChild(iconeLixeira)
         excluirFilme.classList.add('botao-excluir')
-        excluirFilme.onclick = excluirFilmes()
+        excluirFilme.addEventListener('click', () => excluirFilmes(idFilme.textContent))
 
         const editarFilme = document.createElement('button')
         const iconeLapis = document.createElement('img')
@@ -45,7 +45,7 @@ async function criarTabela(){
         iconeLapis.src = '../img/pencil_icon.png'
         editarFilme.appendChild(iconeLapis)
         editarFilme.classList.add('botao-editar')
-       //editarFilme.addEventListener('click', editarFilmes())
+        //editarFilme.addEventListener('click', editarFilmes())
 
         linhaFilme.append(idFilme, nomeFilme, precoFilme, dataFilme, excluirFilme, editarFilme)
         tabela.appendChild(linhaFilme)
@@ -55,7 +55,15 @@ async function criarTabela(){
 }
 
 async function excluirFilmes(id){
-    console.log('funcionando')
+    const idFilme = id
+    const excluir = await deleteFilme(idFilme)
+
+    if(excluir){
+        console.log('filme excluido com sucesso')
+        location.reload()
+    }else{
+        console.log(Error)
+    }
 
 }
 
