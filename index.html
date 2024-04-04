@@ -21,11 +21,11 @@
           }
         }
       </script>
-       <script src="app.js" defer></script>
+       <script src="./js/app.js" type="module" defer></script>
        <link rel="stylesheet" href="style.css">
     <title>Acme Filmes CMS</title>
 </head>
-<body class="overflow-hidden">
+<body>
 
     <div class="header width-full h-40 bg-bg-header flex justify-between" id="header">
         <img src="./img/Logo Desktop.png" alt="" class="ml-5 mt-4 h-44">
@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div class="main width-full h-screen bg-bg-main flex">
+    <div class="main width-full h-full bg-bg-main flex">
        
         <div class="botoes-laterais flex flex-col gap-8 ml-12 h-48 w-64 justify-center mt-12">
 
@@ -52,13 +52,11 @@
         </div>
 
         <table class="bg-bg-tabela ml-20 w-9/12 h-3/4 mt-8" id="tabela">
-            <tr class="flex">
-                <th class="border border-slate-500 w-20 text-2xl font-semibold">ID</th>
-                <th class="border border-slate-500 w-5/12 text-2xl font-semibold">Nome</th>
-                <th class="border border-slate-500 w-28 text-2xl font-semibold">Preço</th>
-                <th class="border border-slate-500 w-64 text-2xl font-semibold">Data Lanç.</th>
-                <th class="border border-slate-500 w-20 text-2xl font-semibold">Fav.</th>
-                <th class=""></th>
+            <tr>
+                <th class=" border-b border-slate-900 w-20 text-2xl font-semibold">ID</th>
+                <th class=" border-b border-slate-900 w-96 text-2xl font-semibold">Nome</th>
+                <th class=" border-b border-slate-900 w-28 text-2xl font-semibold">Preço</th>
+                <th class=" border-b border-slate-900 w-64 text-2xl font-semibold">Data Lanç.</th>
             </tr>
             
         </table>
