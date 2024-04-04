@@ -1,6 +1,6 @@
 'use strict'
 
-import { getFilme, postFilme, deleteFilme, getFilmes } from "./filmes.js"
+import { deleteFilme, getFilmes } from "./filmes.js"
 
 async function criarTabela(){
     const filmes = await getFilmes()
@@ -45,7 +45,7 @@ async function criarTabela(){
         iconeLapis.src = '../img/pencil_icon.png'
         editarFilme.appendChild(iconeLapis)
         editarFilme.classList.add('botao-editar')
-        //editarFilme.addEventListener('click', editarFilmes())
+        //editarFilme.addEventListener('click', () => editarFilmes(idFilme.textContent))
 
         linhaFilme.append(idFilme, nomeFilme, precoFilme, dataFilme, excluirFilme, editarFilme)
         tabela.appendChild(linhaFilme)
@@ -65,6 +65,13 @@ async function excluirFilmes(id){
         console.log(Error)
     }
 
+}
+
+const btnAdd = document.getElementById('btn-adicionar-filme')
+btnAdd.addEventListener('click', adicionarFilme())
+
+function adicionarFilme(){
+    window.location.href = 'novoFilme.html'    
 }
 
 
