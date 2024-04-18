@@ -9,15 +9,56 @@
     --borda-dados-filme: #000000;
 
 }
-.linha-filme{
-    border: .5px solid var(--borda-dados-filme);
+.coluna-id{
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin-inline: 2vw;
+    font-size: 20px;
+}
+.coluna-nome{
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin-inline: 10vw;
+    font-size: 20px;
+}
+.coluna-desc{
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin-inline: 10vw;
+    font-size: 20px;
 }
 .linha-id{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 14vh;
-    border-right: 1px solid var(--borda-dados-filme);
+    width: 5vw;
+    margin-left: 1px;
+    border-right: .5px solid var(--borda-dados-filme);
+}
+.linha-nome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 23vw;
+    border-right: .5px solid var(--borda-dados-filme);
+}
+.linha-desc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24.5vw;
+    border-right: .5px solid var(--borda-dados-filme);
+}
+
+.linha-titulo{
+    border-bottom: .5px solid var(--borda-dados-filme);
+    display: flex;
+}
+.linha-dados{
+    display: flex;
 }
 .text-center{
     border-right: 1px solid var(--borda-dados-filme);
@@ -26,32 +67,33 @@
     border-right: 1px solid var(--borda-dados-filme);
 }
 .botao-excluir{
-    width: 6vh;
-    height: 6vh;
+    width: 5vh;
+    height: 5vh;
     background-color: var(--bg-botao-excluir);
     border-radius: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 15vh;
+    margin-left: 10vh;
+    margin-top: 5px;
 }
 .icone-lixeira{
-    width: 40px;
-    height: 40px;
+    width: 4vh;
+    height: 4vh;
 }
 
 .botao-editar{
-    width: 6vh;
-    height: 6vh;
+    width: 5vh;
+    height: 5vh;
     background-color: var(--bg-botao-editar);
     border-radius: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 38vh;
-    margin-top: -6vh;
+    margin-left: 12vh;
+    margin-top: 5px;
 }
 .icone-lapis{
-    width: 35px;
-    height: 35px;
+    width: 3.5vh;
+    height: 3.5vh;
 }

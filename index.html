@@ -8,7 +8,7 @@
         tailwind.config = {
           theme: {
             extend: {
-                colors:{
+                colors:{ 
                     'bg-header': '#782525',
                     'bg-main': '#323247',
                     'bg-tabela': '#D9D9D9',
@@ -35,31 +35,30 @@
         </div>
     </div>
 
-    <div class="main width-full h-full bg-bg-main flex">
+    <div class="main width-full h-screen bg-bg-main flex">
        
         <div class="botoes-laterais flex flex-col gap-8 ml-12 h-48 w-64 justify-center mt-12">
 
+            <select name="opcoes-api" id="opcoes" class="rounded-md text-lg border border-gray-500">
+                <option value="generos">Generos</option>
+                <option value="classificacoes">Classificacoes</option>
+                <option value="atores">Atores</option>
+                <option value="diretores">Diretores</option>
+                <option value="filmes">Filmes</option>
+            </select>
             <button class="bg-bg-botao-visualizar-filmes flex justify-center align-center rounded-md w-full h-16">
                 <img src="./img/eye_icon.png" alt="" class="h-14">
-                <p class="text-white font-semibold mt-3.5 text-lg" >Visualizar Filmes</p>
+                <p class="text-white font-semibold mt-3.5 text-md" id="visualizar" >Visualizar Filmes</p>
             </button>
 
             <button class="bg-bg-botao-adicionar-filmes flex justify-center align-center rounded-md w-full h-16" id="btn-adicionar-filme">
                 <img src="./img/plus_icon.png" alt="" class="h-14">
-                <p class="text-white font-semibold mt-3.5 text-lg">Adicionar Filme</p>
+                <p class="text-white font-semibold mt-4 text-md" id="adicionar">Adicionar Filme</p>
             </button>
 
         </div>
 
-        <table class="bg-bg-tabela ml-20 w-9/12 h-3/4 mt-8" id="tabela">
-            <tr>
-                <th class=" border-b border-slate-900 w-20 text-2xl font-semibold">ID</th>
-                <th class=" border-b border-slate-900 w-96 text-2xl font-semibold">Nome</th>
-                <th class=" border-b border-slate-900 w-28 text-2xl font-semibold">Preço</th>
-                <th class=" border-b border-slate-900 w-64 text-2xl font-semibold">Data Lanç.</th>
-            </tr>
-            
-        </table>
+        <table class="bg-bg-tabela ml-20 w-9/12 h-3/4 mt-8" id="tabela"></table>
     
     </div>
     

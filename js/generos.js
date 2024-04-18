@@ -1,34 +1,34 @@
-export async function getFilmes(){
-    const url = 'http://localhost:8080/v2/acmeFilmes/filmes'
+export async function getGeneros(){
+    const url = 'http://localhost:8080/v2/acmeFilmes/generos'
     const response = await fetch(url)
     const data = await response.json()
     
-    return data.filmes    
+    return data.generos  
 }
 
-export async function getFilme(id){
-    const url = `http://localhost:8080/v2/acmeFilmes/filme/${id}`
+export async function getGenero(id){
+    const url = `http://localhost:8080/v2/acmeFilmes/genero/${id}`
     const response = await fetch(url)
     const data = await response.json()
     
-    return data.filme
+    return data.genero
 } 
 
-export async function postFilme(filme){
-    const url = 'http://localhost:8080/v2/acmeFilmes/filme'
+export async function postGenero(genero){
+    const url = 'http://localhost:8080/v2/acmeFilmes/genero'
     const options = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(filme)
+        body: JSON.stringify(genero)
     }
     const response = await fetch(url, options)
     return response.ok
 }
 
-export async function deleteFilme(id){
-    const url = `http://localhost:8080/v2/acmeFilmes/filme/${id}`
+export async function deleteGenero(id){
+    const url = `http://localhost:8080/v2/acmeFilmes/genero/${id}`
     const options = {
         method: 'DELETE'
     }
@@ -36,14 +36,14 @@ export async function deleteFilme(id){
     return response.ok
 }
 
-export async function putFilme(id, dadosFilme){
-    const url = `http://localhost:8080/v2/acmeFilmes/filme/${id}`
+export async function putGenero(id, dadosGenero){
+    const url = `http://localhost:8080/v2/acmeFilmes/genero/${id}`
     const options = {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body:JSON.stringify(dadosFilme)
+        body:JSON.stringify(dadosGenero)
     }
     const response = await fetch(url, options)
     return response.ok
