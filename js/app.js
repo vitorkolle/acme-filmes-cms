@@ -5,93 +5,114 @@ import { deleteGenero, getGeneros, postGenero, putGenero } from "./generos.js"
 
 const select = document.getElementById('opcoes')
 select.addEventListener('change', criarBotões)
-select.addEventListener('change', criarTabela)
+
+const btnVisualizar = document.getElementById('visualizar')
+btnVisualizar.addEventListener('click', criarTabela)
+
+const btnCriar = document.getElementById('adicionar')
 
 
 function criarBotões() {
     const txtBotoes = document.getElementById('opcoes').value
 
-    const btnVisualizar = document.getElementById('visualizar')
     btnVisualizar.textContent = `Visualizar ${String(txtBotoes)[0].toUpperCase() + String(txtBotoes).substring(1)}`
 
-    const btnCriar = document.getElementById('adicionar')
     btnCriar.textContent = `Adicionar ${String(txtBotoes)[0].toUpperCase() + String(txtBotoes).substring(1)}`
 }
 
 async function criarTabela() {
-    const tabela = document.getElementById('tabela')
-
-    const txtSelect = document.getElementById('opcoes').value
+    const txtSelect = select.value
 
     if (txtSelect == 'generos') {
 
-        const colunaId = document.createElement('th')
-        colunaId.textContent = 'ID'
-        colunaId.classList.add('coluna-id')
-    
-        const colunaNome = document.createElement('th')
-        colunaNome.textContent = 'Nome'
-        colunaNome.classList.add('coluna-nome')
-    
-        const colunaDescricao = document.createElement('th')
-        colunaDescricao.textContent = 'Descrição'
-        colunaDescricao.classList.add('coluna-desc')
-    
-        const linhaTitulo = document.createElement('tr')
-        linhaTitulo.classList.add('linha-titulo')
-        linhaTitulo.append(colunaId, colunaNome, colunaDescricao)
+    const verificarTabela = document.querySelector('table')
+    const teste = document.body.contains(verificarTabela)
 
-        tabela.appendChild(linhaTitulo)
+        if (teste == false) {
 
-        const generos = await getGeneros()
+            const tabela = document.createElement('table')
+            tabela.id = 'tabela'
+            tabela.classList.add('tbl')
 
-        generos.forEach(genero => {
-            const linhaDados = document.createElement('tr')
-            linhaDados.classList.add('linha-dados')
+            const divTabela = document.getElementById('tbl')
+            divTabela.appendChild(tabela)
 
-            const idGenero = document.createElement('td')
-            idGenero.textContent = genero.id
-            idGenero.classList.add('linha-id')
+            const colunaId = document.createElement('th')
+            colunaId.textContent = 'ID'
+            colunaId.classList.add('coluna-id')
 
-            const nomeGenero = document.createElement('td')
-            nomeGenero.textContent = genero.nome
-            nomeGenero.classList.add('linha-nome')
+            const colunaNome = document.createElement('th')
+            colunaNome.textContent = 'Nome'
+            colunaNome.classList.add('coluna-nome')
 
-            const descricaoGenero = document.createElement('td')
-            descricaoGenero.textContent = genero.descricao_genero
-            descricaoGenero.classList.add('linha-desc')
+            const colunaDescricao = document.createElement('th')
+            colunaDescricao.textContent = 'Descrição'
+            colunaDescricao.classList.add('coluna-desc')
+
+            const linhaTitulo = document.createElement('tr')
+            linhaTitulo.classList.add('linha-titulo')
+            linhaTitulo.append(colunaId, colunaNome, colunaDescricao)
+
+            tabela.appendChild(linhaTitulo)
+
+            const generos = await getGeneros()
+
+            generos.forEach(genero => {
+                const linhaDados = document.createElement('tr')
+                linhaDados.classList.add('linha-dados')
+
+                const idGenero = document.createElement('td')
+                idGenero.textContent = genero.id
+                idGenero.classList.add('linha-id')
+
+                const nomeGenero = document.createElement('td')
+                nomeGenero.textContent = genero.nome
+                nomeGenero.classList.add('linha-nome')
+
+                const descricaoGenero = document.createElement('td')
+                descricaoGenero.textContent = genero.descricao_genero
+                descricaoGenero.classList.add('linha-desc')
 
 
-            const excluirGenero = document.createElement('button')
-            const iconeLixeira = document.createElement('img')
-            iconeLixeira.classList.add('icone-lixeira')
-            iconeLixeira.src = '../img/remove_icon.png'
-            excluirGenero.appendChild(iconeLixeira)
-            excluirGenero.classList.add('botao-excluir')
-            excluirGenero.addEventListener('click', () => deleteGenero(idFilme.textContent))
+                const excluirGenero = document.createElement('button')
+                const iconeLixeira = document.createElement('img')
+                iconeLixeira.classList.add('icone-lixeira')
+                iconeLixeira.src = '../img/remove_icon.png'
+                excluirGenero.appendChild(iconeLixeira)
+                excluirGenero.classList.add('botao-excluir')
+                console.log(idGenero)
+                excluirGenero.addEventListener('click', () => deleteGenero(idGenero.textContent))
 
-            const editarGenero = document.createElement('button')
-            const iconeLapis = document.createElement('img')
-            iconeLapis.classList.add('icone-lapis')
-            iconeLapis.src = '../img/pencil_icon.png'
-            editarGenero.appendChild(iconeLapis)
-            editarGenero.classList.add('botao-editar')
-            //editarFilme.addEventListener('click', () => editarFilmes(idFilme.textContent))
-            
-            linhaDados.append(idGenero, nomeGenero, descricaoGenero, excluirGenero, editarGenero)
-            tabela.appendChild(linhaDados)
-           });
-           
+                const editarGenero = document.createElement('button')
+                const iconeLapis = document.createElement('img')
+                iconeLapis.classList.add('icone-lapis')
+                iconeLapis.src = '../img/pencil_icon.png'
+                editarGenero.appendChild(iconeLapis)
+                editarGenero.classList.add('botao-editar')
+                //editarFilme.addEventListener('click', () => editarFilmes(idFilme.textContent))
+
+                linhaDados.append(idGenero, nomeGenero, descricaoGenero, excluirGenero, editarGenero)
+                tabela.appendChild(linhaDados)
+            });
+        }
+        else{
+            alert('Todos os dados já foram registrados!!')
+        }
+
     }
+
     else if (txtSelect == 'classificacoes') {
 
     }
+
     else if (txtSelect == 'diretores') {
 
     }
+
     else if (txtSelect == 'atores') {
 
     }
+
     else if (txtSelect == 'filmes') {
         const filmes = await getFilmes()
 
@@ -127,6 +148,19 @@ async function criarTabela() {
             excluirFilme.classList.add('botao-excluir')
             excluirFilme.addEventListener('click', () => excluirFilmes(idFilme.textContent))
 
+            async function excluirFilmes(id) {
+                const idFilme = id
+                const excluir = await deleteFilme(idFilme)
+
+                if (excluir) {
+                    console.log('filme excluido com sucesso')
+                    location.reload()
+                } else {
+                    console.log(Error)
+                }
+
+            }
+
             const editarFilme = document.createElement('button')
             const iconeLapis = document.createElement('img')
             iconeLapis.classList.add('icone-lapis')
@@ -142,18 +176,4 @@ async function criarTabela() {
     }
 }
 
-async function excluirFilmes(id) {
-    const idFilme = id
-    const excluir = await deleteFilme(idFilme)
-
-    if (excluir) {
-        console.log('filme excluido com sucesso')
-        location.reload()
-    } else {
-        console.log(Error)
-    }
-
-}
-
-//criarTabela()
 criarBotões()

@@ -7,7 +7,15 @@
     --bg-botao-editar: #1EA19A;
     --bg-botao-excluir: #C32121;
     --borda-dados-filme: #000000;
+    --bg-tabela: #D9D9D9;
 
+}
+.tbl{
+    background-color: var(--bg-tabela);
+    margin-left: 3vw;
+    margin-top: 3vh;
+    width: 100%;
+    height: fit-content;
 }
 .coluna-id{
     display: flex;
@@ -59,6 +67,7 @@
 }
 .linha-dados{
     display: flex;
+    margin-bottom: .5px;
 }
 .text-center{
     border-right: 1px solid var(--borda-dados-filme);

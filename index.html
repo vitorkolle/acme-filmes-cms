@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
+        tailwind.config = { 
           theme: {
             extend: {
                 colors:{ 
@@ -13,6 +13,7 @@
                     'bg-main': '#323247',
                     'bg-tabela': '#D9D9D9',
                     'bg-botao-visualizar-filmes': '#419AA6',
+                    'bg-botao-visualizar-filmes-desativado': '#b3bdbf',
                     'bg-botao-adicionar-filmes': '#639B40', 
                     'bg-botao-editar-filmes': '#1EA19A',
                     'bg-botao-deletar-filmes': '#C32121'
@@ -35,7 +36,7 @@
         </div>
     </div>
 
-    <div class="main width-full h-screen bg-bg-main flex">
+    <div class="main width-full h-screen bg-bg-main flex" id="main">
        
         <div class="botoes-laterais flex flex-col gap-8 ml-12 h-48 w-64 justify-center mt-12">
 
@@ -46,7 +47,7 @@
                 <option value="diretores">Diretores</option>
                 <option value="filmes">Filmes</option>
             </select>
-            <button class="bg-bg-botao-visualizar-filmes flex justify-center align-center rounded-md w-full h-16">
+            <button class="bg-bg-botao-visualizar-filmes flex justify-center align-center rounded-md w-full h-16" id="btn-visualizar-filme">
                 <img src="./img/eye_icon.png" alt="" class="h-14">
                 <p class="text-white font-semibold mt-3.5 text-md" id="visualizar" >Visualizar Filmes</p>
             </button>
@@ -55,10 +56,9 @@
                 <img src="./img/plus_icon.png" alt="" class="h-14">
                 <p class="text-white font-semibold mt-4 text-md" id="adicionar">Adicionar Filme</p>
             </button>
+         </div>
 
-        </div>
-
-        <table class="bg-bg-tabela ml-20 w-9/12 h-3/4 mt-8" id="tabela"></table>
+         <div id="tbl" class="width-full h-screen"></div>
     
     </div>
     

@@ -24,7 +24,7 @@ export async function postFilme(filme){
         body: JSON.stringify(filme)
     }
     const response = await fetch(url, options)
-    return response.ok
+    return response.ok 
 }
 
 export async function deleteFilme(id){

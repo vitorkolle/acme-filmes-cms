@@ -33,6 +33,7 @@ export async function deleteGenero(id){
         method: 'DELETE'
     }
     const response = await fetch(url, options)
+    location.reload()
     return response.ok
 }
 
