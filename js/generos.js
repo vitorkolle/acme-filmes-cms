@@ -33,6 +33,11 @@ export async function deleteGenero(id){
         method: 'DELETE'
     }
     const response = await fetch(url, options)
+    if(response){
+        alert('Dados excluídos com sucesso!!!')
+    }else{
+        alert('Erro ao excluir os dados')
+    }
     location.reload()
     return response.ok
 }

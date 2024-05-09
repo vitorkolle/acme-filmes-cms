@@ -10,6 +10,7 @@ const btnVisualizar = document.getElementById('visualizar')
 btnVisualizar.addEventListener('click', criarTabela)
 
 const btnCriar = document.getElementById('adicionar')
+btnCriar.addEventListener('click', cadastrarDados)
 
 
 function criarBotões() {
@@ -58,91 +59,98 @@ async function criarTabela() {
 
             const generos = await getGeneros()
 
-            const dadosGenero = {}
+            if (generos) {
 
-            generos.forEach(genero => {
-                const linhaDados = document.createElement('tr')
-                linhaDados.classList.add('linha-dados')
+                const dadosGenero = {}
 
-                const idGenero = document.createElement('td')
-                idGenero.textContent = genero.id
-                idGenero.classList.add('linha-id')
+                generos.forEach(genero => {
+                    const linhaDados = document.createElement('tr')
+                    linhaDados.classList.add('linha-dados')
 
-                const nomeGenero = document.createElement('td')
-                nomeGenero.textContent = genero.nome
-                nomeGenero.classList.add('linha-nome')
+                    const idGenero = document.createElement('td')
+                    idGenero.textContent = genero.id
+                    idGenero.classList.add('linha-id')
 
-                const descricaoGenero = document.createElement('td')
-                descricaoGenero.textContent = genero.descricao_genero
-                descricaoGenero.classList.add('linha-desc')
+                    const nomeGenero = document.createElement('td')
+                    nomeGenero.textContent = genero.nome
+                    nomeGenero.classList.add('linha-nome')
+
+                    const descricaoGenero = document.createElement('td')
+                    descricaoGenero.textContent = genero.descricao_genero
+                    descricaoGenero.classList.add('linha-desc')
 
 
-                const excluirGenero = document.createElement('button')
-                const iconeLixeira = document.createElement('img')
-                iconeLixeira.classList.add('icone-lixeira')
-                iconeLixeira.src = '../img/remove_icon.png'
-                excluirGenero.appendChild(iconeLixeira)
-                excluirGenero.classList.add('botao-excluir')
-                excluirGenero.addEventListener('click', () => deleteGenero(idGenero.textContent))
+                    const excluirGenero = document.createElement('button')
+                    const iconeLixeira = document.createElement('img')
+                    iconeLixeira.classList.add('icone-lixeira')
+                    iconeLixeira.src = '../img/remove_icon.png'
+                    excluirGenero.appendChild(iconeLixeira)
+                    excluirGenero.classList.add('botao-excluir')
+                    excluirGenero.addEventListener('click', () => deleteGenero(idGenero.textContent))
 
-                const editarGenero = document.createElement('button')
-                const iconeLapis = document.createElement('img')
-                iconeLapis.classList.add('icone-lapis')
-                iconeLapis.src = '../img/pencil_icon.png'
-                editarGenero.appendChild(iconeLapis)
-                editarGenero.classList.add('botao-editar')
-                editarGenero.addEventListener('click', function () {
-                    main.innerHTML =
+                    const editarGenero = document.createElement('button')
+                    const iconeLapis = document.createElement('img')
+                    iconeLapis.classList.add('icone-lapis')
+                    iconeLapis.src = '../img/pencil_icon.png'
+                    editarGenero.appendChild(iconeLapis)
+                    editarGenero.classList.add('botao-editar')
+                    editarGenero.addEventListener('click', function () {
+                        main.innerHTML =
+                            `
+                        <div class="janela-modal w-1/3 h-3/6 bg-bg-tabela ml-96 mt-8 flex justify-center">
+                        <div class="modal h-full w-full ml-10 flex flex-col	justify-center items-start" id="formulario">
+    
+                        <div class="id flex items-center justify-start h-16 w-32 ml-16">
+                        <label for="" class="text-xl mr-2">ID:</label>
+                        <input type="number" class="w-20 h-8 rounded-lg p-2">
+                        </div>
+    
+                        <div class="nome flex items-center justify-start h-16 w-full ml-8">
+                        <label for="" class="text-xl mr-2">Nome:</label>
+                        <input type="text" class="w-80 h-8 rounded-lg p-2" id="nomeGenero">
+                        </div>
+    
+                        <div class="descricao flex items-center justify-start w-5/6">
+                        <label for="" class="text-xl mr-2">Descrição:</label>
+                        <textarea name="" id="descGenero" cols="30" rows="10" class="w-96 h-52 resize-none rounded-lg p-2"></textarea>
+                        </div>
+                        
+                        <div class="flex w-full justify-center mt-10 -ml-10">
+                        <button class="bg-bg-botao-adicionar-filmes h-10 w-40 rounded-full text-white text-lg font-semibold" id="atualizarGenero">Atualizar Gênero</button>
+                        </div>
+    
+                       </div>                    
                         `
-                    <div class="janela-modal w-1/3 h-3/6 bg-bg-tabela ml-96 mt-8 flex justify-center">
-                    <div class="modal h-full w-full ml-10 flex flex-col	justify-center items-start" id="formulario">
+                        const btnAtualizar = document.getElementById('atualizarGenero')
+                        btnAtualizar.addEventListener('click', async function () {
+                            const id = idGenero.textContent
 
-                    <div class="id flex items-center justify-start h-16 w-32 ml-16">
-                    <label for="" class="text-xl mr-2">ID:</label>
-                    <input type="number" class="w-20 h-8 rounded-lg p-2">
-                    </div>
+                            const nome = document.getElementById('nomeGenero')
+                            dadosGenero.nome = nome.value
 
-                    <div class="nome flex items-center justify-start h-16 w-full ml-8">
-                    <label for="" class="text-xl mr-2">Nome:</label>
-                    <input type="text" class="w-80 h-8 rounded-lg p-2" id="nomeGenero">
-                    </div>
+                            const descricao_genero = document.getElementById('descGenero')
+                            dadosGenero.descricao_genero = descricao_genero.value
 
-                    <div class="descricao flex items-center justify-start w-5/6">
-                    <label for="" class="text-xl mr-2">Descrição:</label>
-                    <textarea name="" id="descGenero" cols="30" rows="10" class="w-96 h-52 resize-none rounded-lg p-2"></textarea>
-                    </div>
-                    
-                    <div class="flex w-full justify-center mt-10 -ml-10">
-                    <button class="bg-bg-botao-adicionar-filmes h-10 w-40 rounded-full text-white text-lg font-semibold" id="atualizarGenero">Atualizar Gênero</button>
-                    </div>
+                            const atualizarGenero = await putGenero(id, dadosGenero)
 
-                   </div>                    
-                    `
-                    const btnAtualizar = document.getElementById('atualizarGenero')
-                    btnAtualizar.addEventListener('click', async function () {
-                        const id = idGenero.textContent
-
-                        const nome = document.getElementById('nomeGenero')
-                        dadosGenero.nome = nome.value
-
-                        const descricao_genero = document.getElementById('descGenero')
-                        dadosGenero.descricao_genero = descricao_genero.value
-
-                        const atualizarGenero = await putGenero(id, dadosGenero)
-
-                        if (atualizarGenero) {
-                            alert('Dados atualizados com sucesso!!!')
-                            location.reload()
-                        }
-                        else {
-                            alert('Ocorreu um erro ao atualizar os dados!!')
-                        }
+                            if (atualizarGenero) {
+                                alert('Dados atualizados com sucesso!!!')
+                                location.reload()
+                            }
+                            else {
+                                alert('Ocorreu um erro ao atualizar os dados!!')
+                            }
+                        })
                     })
-                })
 
-                linhaDados.append(idGenero, nomeGenero, descricaoGenero, excluirGenero, editarGenero)
-                tabela.appendChild(linhaDados)
-            });
+                    linhaDados.append(idGenero, nomeGenero, descricaoGenero, excluirGenero, editarGenero)
+                    tabela.appendChild(linhaDados)
+                });
+            }
+            else {
+                alert('Não foram encontrados dados, cadastre-os ou pesquise outros atributos!!!')
+                location.reload()
+            }
         }
         else {
             alert('Todos os dados já foram registrados!!')
@@ -223,6 +231,71 @@ async function criarTabela() {
 
         });
     }
+}
+
+async function cadastrarDados() {
+
+    const txtSelect = select.value
+    const main = document.getElementById('main')
+
+    if (txtSelect == 'generos') {
+        main.innerHTML =
+            `
+                        <div class="janela-modal w-1/3 h-3/6 bg-bg-tabela ml-96 mt-8 flex justify-center">
+                        <div class="modal h-full w-full ml-10 flex flex-col	justify-center items-start" id="formulario">
+    
+                        <div class="nome flex items-center justify-start h-16 w-full ml-8">
+                        <label for="" class="text-xl mr-2">Nome:</label>
+                        <input type="text" class="w-80 h-8 rounded-lg p-2" id="nomeGenero">
+                        </div>
+    
+                        <div class="descricao flex items-center justify-start w-5/6">
+                        <label for="" class="text-xl mr-2">Descrição:</label>
+                        <textarea name="" id="descGenero" cols="30" rows="10" class="w-96 h-52 resize-none rounded-lg p-2"></textarea>
+                        </div>
+                        
+                        <div class="flex w-full justify-center mt-10 -ml-10">
+                        <button class="bg-bg-botao-adicionar-filmes h-10 w-40 rounded-full text-white text-lg font-semibold" id="cadastrarGenero">Cadastrar Gênero</button>
+                        </div>
+    
+                       </div>                    
+                        `
+        const btnCadastrar = document.getElementById('cadastrarGenero')
+        btnCadastrar.addEventListener('click', async function () {
+            const dadosGenero = {}
+
+            const nome = document.getElementById('nomeGenero')
+            dadosGenero.nome = nome.value
+
+            const descricao_genero = document.getElementById('descGenero')
+            dadosGenero.descricao_genero = descricao_genero.value
+
+            const cadastrarGenero = await postGenero(dadosGenero)
+
+            if (cadastrarGenero) {
+                alert('Dados cadastrados com sucesso!!!')
+                location.reload()
+            }
+            else {
+                alert('Ocorreu um erro ao cadastrar os dados!!')
+            }
+        })
+    }
+    else if (txtSelect == 'classificacoes') {
+
+    }
+
+    else if (txtSelect == 'diretores') {
+
+    }
+
+    else if (txtSelect == 'atores') {
+
+    }
+    else if (txtSelect == 'filmes') {
+
+    }
+
 }
 
 criarBotões()
