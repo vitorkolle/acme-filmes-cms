@@ -25,8 +25,9 @@ async function criarTabela() {
 
     if (txtSelect == 'generos') {
 
-    const verificarTabela = document.querySelector('table')
-    const teste = document.body.contains(verificarTabela)
+        const verificarTabela = document.querySelector('table')
+        const teste = document.body.contains(verificarTabela)
+        const main = document.getElementById('main')
 
         if (teste == false) {
 
@@ -57,6 +58,8 @@ async function criarTabela() {
 
             const generos = await getGeneros()
 
+            const dadosGenero = {}
+
             generos.forEach(genero => {
                 const linhaDados = document.createElement('tr')
                 linhaDados.classList.add('linha-dados')
@@ -80,7 +83,6 @@ async function criarTabela() {
                 iconeLixeira.src = '../img/remove_icon.png'
                 excluirGenero.appendChild(iconeLixeira)
                 excluirGenero.classList.add('botao-excluir')
-                console.log(idGenero)
                 excluirGenero.addEventListener('click', () => deleteGenero(idGenero.textContent))
 
                 const editarGenero = document.createElement('button')
@@ -89,13 +91,60 @@ async function criarTabela() {
                 iconeLapis.src = '../img/pencil_icon.png'
                 editarGenero.appendChild(iconeLapis)
                 editarGenero.classList.add('botao-editar')
-                //editarFilme.addEventListener('click', () => editarFilmes(idFilme.textContent))
+                editarGenero.addEventListener('click', function () {
+                    main.innerHTML =
+                        `
+                    <div class="janela-modal w-1/3 h-3/6 bg-bg-tabela ml-96 mt-8 flex justify-center">
+                    <div class="modal h-full w-full ml-10 flex flex-col	justify-center items-start" id="formulario">
+
+                    <div class="id flex items-center justify-start h-16 w-32 ml-16">
+                    <label for="" class="text-xl mr-2">ID:</label>
+                    <input type="number" class="w-20 h-8 rounded-lg p-2">
+                    </div>
+
+                    <div class="nome flex items-center justify-start h-16 w-full ml-8">
+                    <label for="" class="text-xl mr-2">Nome:</label>
+                    <input type="text" class="w-80 h-8 rounded-lg p-2" id="nomeGenero">
+                    </div>
+
+                    <div class="descricao flex items-center justify-start w-5/6">
+                    <label for="" class="text-xl mr-2">Descrição:</label>
+                    <textarea name="" id="descGenero" cols="30" rows="10" class="w-96 h-52 resize-none rounded-lg p-2"></textarea>
+                    </div>
+                    
+                    <div class="flex w-full justify-center mt-10 -ml-10">
+                    <button class="bg-bg-botao-adicionar-filmes h-10 w-40 rounded-full text-white text-lg font-semibold" id="atualizarGenero">Atualizar Gênero</button>
+                    </div>
+
+                   </div>                    
+                    `
+                    const btnAtualizar = document.getElementById('atualizarGenero')
+                    btnAtualizar.addEventListener('click', async function () {
+                        const id = idGenero.textContent
+
+                        const nome = document.getElementById('nomeGenero')
+                        dadosGenero.nome = nome.value
+
+                        const descricao_genero = document.getElementById('descGenero')
+                        dadosGenero.descricao_genero = descricao_genero.value
+
+                        const atualizarGenero = await putGenero(id, dadosGenero)
+
+                        if (atualizarGenero) {
+                            alert('Dados atualizados com sucesso!!!')
+                            location.reload()
+                        }
+                        else {
+                            alert('Ocorreu um erro ao atualizar os dados!!')
+                        }
+                    })
+                })
 
                 linhaDados.append(idGenero, nomeGenero, descricaoGenero, excluirGenero, editarGenero)
                 tabela.appendChild(linhaDados)
             });
         }
-        else{
+        else {
             alert('Todos os dados já foram registrados!!')
         }
 
