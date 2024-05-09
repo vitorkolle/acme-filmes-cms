@@ -14,9 +14,16 @@
     background-color: var(--bg-tabela);
     margin-left: 3vw;
     margin-top: 3vh;
-    width: 100%;
+    width: 98%;
     height: fit-content;
 }
+
+.btn-lateral{
+    width: 20vh;
+}
+
+/*****************************************************************/
+
 .coluna-id{
     display: flex;
     justify-content: center;
@@ -60,7 +67,6 @@
     width: 24.5vw;
     border-right: .5px solid var(--borda-dados-filme);
 }
-
 .linha-titulo{
     border-bottom: .5px solid var(--borda-dados-filme);
     display: flex;
@@ -69,12 +75,40 @@
     display: flex;
     margin-bottom: .5px;
 }
-.text-center{
-    border-right: 1px solid var(--borda-dados-filme);
+
+/*************************************************************************************/
+
+.coluna-faixa{
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin-inline: 2.4vw;
+    font-size: 20px;
 }
-#data-filme{
-    border-right: 1px solid var(--borda-dados-filme);
+.coluna-classificacao{
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin-inline: 8.1vw;
+    font-size: 20px;
 }
+.coluna-caracteristicas{
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin-inline: 9vw;
+    font-size: 20px;
+}
+.linha-faixa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+    border-right: .5px solid var(--borda-dados-filme);
+}
+
+/************************************************************************************/
+
 .botao-excluir{
     width: 5vh;
     height: 5vh;
@@ -83,7 +117,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 10vh;
+    margin-left: 4vh;
     margin-top: 5px;
 }
 .icone-lixeira{
@@ -99,7 +133,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 12vh;
+    margin-left: 6vh;
     margin-top: 5px;
 }
 .icone-lapis{
